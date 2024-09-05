@@ -51,7 +51,7 @@ PICRUSt2 (https://github.com/picrust/picrust2) (optional)
 Users can download 16S rRNA raw data (SRP291583 and PRJNA1088906) from NCBI (https://www.ncbi.nlm.nih.gov/)
 
 
-**Database** 
+**16S rRNA Databases** 
 
 SILVA (https://www.arb-silva.de/)
 
@@ -94,13 +94,6 @@ Users can perform these codes separately or run them all at once with the **05.A
 
 #5 Use diverse R packages (phyloseq, microbiomemarker)
 Using the feature-adj.tsv file, users can obtain more accurate microbiome composition and PICRUSt2-based functional profile data. Additionally, users can load the ASVs data with phyloseq (R package) and analyze microbiome data such as alpha and beta diversity.
-
-**16S rRNA Databases**
-Adj-16S method can use various 16S rRNA databases.
-Greengenes2 (https://github.com/biocore/q2-greengenes2)
-RDP (https://github.com/rdpstaff/classifier)
-SILVA (https://www.arb-silva.de/)
-Users can download the 16S rRNA database from the link above.
 
 
 **Applications**
