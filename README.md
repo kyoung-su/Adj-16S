@@ -22,14 +22,7 @@ Raw data (phyloseq form) of adjusted relative abundance using Adj-16S method can
 
 
 Our developing Adj-16S method based on V1-V3 and V6-V8 regions is explained in detail in the “Advancing gut microbiota profiling accuracy with correction coefficient-based adjustments for dual 16S rRNA reads” section of the paper.
-We will guide majorly how to use Adj-16S method in this document. Below description is about the calculation of correction coefficient values. (You can confirm that each coefficient value for each family in our paper)
-
-Utilizing mock datasets (Zymo, ZIEL-I, ZIEL-II) and the SILVA DB, we calculated coefficient values for each 16S rRNA region using weighted averages, covering 22 families. Weighted coefficient values for the V1-V3 (ω_i^(13.f)) and V6-V8 (ω_i^(68.f)) regions were determined by dividing the relative abundance from the V1-V3 (x_i^(13.f)) and V6-V8 (x_i^(68.f)) regions by the total abundance [the sum of the relative abundances from the V1-V3 region (x_i^(13.f)) and the V6-V8 region (x_i^(68.f))], respectively. The means of these weighted coefficient values (ϖ_i^(13.f) 〖and ϖ〗_i^(68.f)) were computed using data from eight independent datasets across three mock datasets. The equations (Eqs) applied are as follows: 
-For the V1-V3 region: ω_i^(13.f)=  (x_i^(13.f))/(x_i^(13.f)  + x_i^(68.f) ) (Eq. 1), and the mean ϖ_i^(13.f)=  1/n  ∑_(i=1)^n▒ω_i^(13.f)  (Eq. 2). Similarly, we calculated weighted coefficient values for the V6-V8 region (ω_i^(68.f)) as the relative abundance from the V6-V8 region (x_i^(68.f)) divided by the total abundance (x_i^(13.f)+x_i^(68.f)), with the mean of these values from the V6-V8 region (ϖ_i^(68.f)) presented as follows:
-For the V6-V8 region: ω_i^(68.f)=  (x_i^(68.f))/(x_i^(13.f)  + x_i^(68.f) ) (Eq. 3), and the mean ϖ_i^(68.f)=  1/n  ∑_(i=1)^n▒ω_i^(68.f)  (Eq. 4). The adjusted relative abundances for both the V1-V3 (x_i^(〖13.f〗^' )) and V6-V8 (x_i^(〖68.f〗^' )) regions were then calculated as follows:
-x_i^(〖13.f〗^' )=  ϖ_i^(13.f)⋅x_i^(13.f) (Eq. 5), and x_i^(〖68.f〗^' )=  ϖ_i^(68.f)⋅x_i^(68.f) (Eq. 6)
-These adjusted relative abundances lead to the formula representing the total adjusted relative abundance:
-Total relative abundance ≃ ∑_(i=1)^n▒(x_i^(〖13.f〗^' )  + x_i^(〖68.f〗^' ) )  (Eq. 7)
+We will guide majorly how to use Adj-16S method in this document. Deatiled description about the calculation of correction coefficient values will be confirimed in our coming paper (You can confirm equations about the correction coefficient values for each family.)
 Workflow figure was partially created using BioRender.com.
 
 **Requirements**
@@ -73,17 +66,17 @@ Operating system (Linux or Mac)
 **Usage**
 
 #1. Trimming sequences using fastp
-We provide customized python code (01.fastp.py). In the script, you can easily change the code considering your file name. (Installation and guide about fastp, follow the above github link)
+We provide customized python code (**01.fastp.py**). In the script, you can easily change the code considering your file name. (Installation and guide about fastp, follow the above github link)
 
 #2. Check Q score of paired-end sequences using QIIME2
 Confirm the Q score of paired-end reads with QIIME2 platform. Before merging or concatenating paired-end sequences, we need to confirm where the median Q score falls below Q20.
 
 #3. Make concatenated sequences using JTax 
 To obtain merged sequences, you just follow QIIME2 document as described. But, QIIME2 platform cannot concatenate sequences. So, we used JTax platform to concatenate forward and reverse sequences. 
-We can obtain concatenated sequences with direct-joining and inside-out methods. We also provide the customized python codes (02.trim_fastp.py and 03. JTax.py).
+We can obtain concatenated sequences with direct-joining and inside-out methods. We also provide the customized python codes (**02.trim_fastp.py** and **03. JTax.py**).
 First, you can trim sequences with appropriate positions which can be fixed in #2 using QIIME2. We provide customized python code 02, to trim easily for user’s availability. You can adjust (Line XX of code 02) trimming positions and file names.
 Second, you can concatenate sequences with two methods (DJ and IO) using python code 03. After then, you can obtain the concatenated sequence files. In this step, you have to perform these python codes to V1-V3 and V6-V8 regions, separately. (As amplified sequence lengths are different, we cannot apply codes to these sequences at once). 
-Third, perform a python codes 04 (Clear_string_N.py and Clear_string_I.py). After concatenating sequences, ‘NNNNNNNN’ and ‘IIIIIIII’ are placed in the connected position between forward and reverse reads. These gaps can interfere with the next step of analysis and have to be removed. 
+Third, perform a python **codes 04** (Clear_string_N.py and Clear_string_I.py). After concatenating sequences, ‘NNNNNNNN’ and ‘IIIIIIII’ are placed in the connected position between forward and reverse reads. These gaps can interfere with the next step of analysis and have to be removed. 
 
 #4. Apply the correction coefficient values for each microbiome sample
 First, users can easily merge V13-derived and V68-derived table.qza files with “qiime feature-table merge” command line (Please find a detailed command line with QIIME2 document). Second, users can obtain feature-table.tsv from table.qza using “biom convert -i feature-table.biom -o feature-table.tsv --to-tsv”. Third, perform taxonomic classification of V13-DJ and V68-DJ derived ASVs by searching 16S rRNA database such as SILVA, RDP, and greengenes2 using command line in QIIME2 document. Users can obtain taxonomy.tsv from taxonomy.qza.
@@ -93,12 +86,12 @@ First, users can easily merge V13-derived and V68-derived table.qza files with �
 5_multiply-v13-adj.py and 6_multiply-v68-adj.py: Multiply the ASV value by the correction coefficient value and save it as feature-v13-adj.tsv and feature-v68-adj.tsv.
 7_sum-adj.py: Apply this code to sum ASVs of feature-v13-adj.tsv and feature-v68-adj.tsv. Finally, users can obtain feature-adj.tsv file. Change only the columns of the feature-adj.tsv file to the same name as the sample name to be used in the metadata, save it, and then use the feature-adj.tsv file with phyloseq or PICRUSt2.
 
-Users can perform these codes separately or run them all at once with the 05.Adj-16S.py code.
+Users can perform these codes separately or run them all at once with the **05.Adj-16S.py** code.
 
 #5 Use diverse R packages (phyloseq, microbiomemarker)
 Using the feature-adj.tsv file, users can obtain more accurate microbiome composition and PICRUSt2-based functional profile data. Additionally, users can load the ASVs data with phyloseq (R package) and analyze microbiome data such as alpha and beta diversity.
 
-16S rRNA Databases
+**16S rRNA Databases**
 Adj-16S method can use various 16S rRNA databases.
 Greengenes2 (https://github.com/biocore/q2-greengenes2)
 RDP (https://github.com/rdpstaff/classifier)
