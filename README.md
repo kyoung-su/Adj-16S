@@ -45,6 +45,8 @@ phyloseq (https://github.com/joey711/phyloseq) (optional)
 
 PICRUSt2 (https://github.com/picrust/picrust2) (optional)
 
+**16S rRNA raw data**
+Users can download 16S rRNA raw data (SRP291583 and PRJNA1088906) from NCBI (https://www.ncbi.nlm.nih.gov/)
 
 
 **Database** 
