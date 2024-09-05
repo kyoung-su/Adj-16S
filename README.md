@@ -52,15 +52,20 @@ phyloseq (https://github.com/joey711/phyloseq) (optional)
 PICRUSt2 (https://github.com/picrust/picrust2) (optional)
 
 **Database** 
+
 SILVA (https://www.arb-silva.de/)
+
 Greengenes2 (https://github.com/biocore/q2-greengenes2)
+
 RDP (https://sourceforge.net/projects/rdp-classifier/files/rdp-classifier/)
+
 Users can download and align the sequences to diverse 16S rRNA databases.
 
 **Other**
 Operating system (Linux or Mac)
 
 **Usage**
+
 #1. Trimming sequences using fastp
 We provide customized python code (01.fastp.py). In the script, you can easily change the code considering your file name. (Installation and guide about fastp, follow the above github link)
 
