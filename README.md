@@ -32,14 +32,23 @@ Total relative abundance ≃ ∑_(i=1)^n▒(x_i^(〖13.f〗^' )  + x_i^(〖68.f�
 Workflow figure was partially created using BioRender.com.
 
 **Requirements**
+
 **Software**
+
 fastp (https://github.com/OpenGene/fastp) (version >= 0.23.2)
+
 QIIME2 (https://github.com/qiime2/qiime2) (version >= 2022.2)
+
 JTax (https://github.com/TLlab/JTax)
+
 Python (version >= 3.7)
+
 R (https://www.r-project.org/)
+
 pandas (https://pandas.pydata.org/pandas-docs/version/0.11.0/install.html)
+
 phyloseq (https://github.com/joey711/phyloseq) (optional)
+
 PICRUSt2 (https://github.com/picrust/picrust2) (optional)
 
 **Database** 
