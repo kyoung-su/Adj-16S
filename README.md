@@ -2,6 +2,7 @@
 Enhancement of Gut Microbial Diversity and Functional Profiling
 
 **Features of Adj-16S**
+
 	Confirm Phred quality score (Q score)
 	To truncate sequence length, we first confirm the position at which the median Q score drops below 20 for both forward and reverse sequences. 
 
@@ -52,6 +53,7 @@ phyloseq (https://github.com/joey711/phyloseq) (optional)
 PICRUSt2 (https://github.com/picrust/picrust2) (optional)
 
 
+
 **Database** 
 
 SILVA (https://www.arb-silva.de/)
@@ -62,9 +64,11 @@ RDP (https://sourceforge.net/projects/rdp-classifier/files/rdp-classifier/)
 
 Users can download and align the sequences to diverse 16S rRNA databases.
 
+
 **Other**
 
 Operating system (Linux or Mac)
+
 
 **Usage**
 
@@ -100,11 +104,13 @@ RDP (https://github.com/rdpstaff/classifier)
 SILVA (https://www.arb-silva.de/)
 Users can download the 16S rRNA database from the link above.
 
+
 **Applications**
 
 To obtain taxonomic and functional profiling and perform statistical analyses, you can apply produced sequences for diverse R packages and PICRUSt2.
 R packages (phyloseq, microbiomemarker, reshape2, tidyverse)
 PICRUSt2 (https://github.com/picrust/picrust2)
+
 
 **References**
 
