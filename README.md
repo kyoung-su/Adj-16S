@@ -51,6 +51,7 @@ phyloseq (https://github.com/joey711/phyloseq) (optional)
 
 PICRUSt2 (https://github.com/picrust/picrust2) (optional)
 
+
 **Database** 
 
 SILVA (https://www.arb-silva.de/)
@@ -62,6 +63,7 @@ RDP (https://sourceforge.net/projects/rdp-classifier/files/rdp-classifier/)
 Users can download and align the sequences to diverse 16S rRNA databases.
 
 **Other**
+
 Operating system (Linux or Mac)
 
 **Usage**
@@ -99,11 +101,13 @@ SILVA (https://www.arb-silva.de/)
 Users can download the 16S rRNA database from the link above.
 
 **Applications**
+
 To obtain taxonomic and functional profiling and perform statistical analyses, you can apply produced sequences for diverse R packages and PICRUSt2.
 R packages (phyloseq, microbiomemarker, reshape2, tidyverse)
 PICRUSt2 (https://github.com/picrust/picrust2)
 
 **References**
+
 1. Chen S, Zhou Y, Chen Y, Gu J. fastp: an ultra-fast all-in-one FASTQ preprocessor. Bioinformatics 34, i884-i890 (2018).
 2. Bolyen E, et al. Reproducible, interactive, scalable and extensible microbiome data science using QIIME 2. Nat Biotechnol 37, 852-857 (2019).
 3. Liu T, et al. Joining Illumina paired-end reads for classifying phylogenetic marker sequences. BMC Bioinformatics 21, 105 (2020).
