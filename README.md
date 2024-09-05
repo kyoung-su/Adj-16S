@@ -3,18 +3,18 @@ Enhancement of Gut Microbial Diversity and Functional Profiling
 
 **Features of Adj-16S**
 
-	Confirm Phred quality score (Q score)
-	To truncate sequence length, we first confirm the position at which the median Q score drops below 20 for both forward and reverse sequences. 
+Confirm Phred quality score (Q score)
+To truncate sequence length, we first confirm the position at which the median Q score drops below 20 for both forward and reverse sequences. 
 
-	Concatenating paired-end sequences 
-	After we obtained length trimmed paired-end sequences, we concatenated forward and reverse sequences.
+Concatenating paired-end sequences 
+After we obtained length trimmed paired-end sequences, we concatenated forward and reverse sequences.
 
-	Use correction coefficient values
-	Utilizing mock datasets (Zymo, ZIEL-I, ZIEL-II) and the SILVA database, we calculated the correction coefficient values for each family using weighted averages, covering 22 families. Weighted coefficient values were calculated by using measured relative abundance obtained from V1-V3 and V6-V8 regions. Users can understand more easily after you read graphical representation of “workflows of Adj-16S”. 
+Use correction coefficient values
+Utilizing mock datasets (Zymo, ZIEL-I, ZIEL-II) and the SILVA database, we calculated the correction coefficient values for each family using weighted averages, covering 22 families. Weighted coefficient values were calculated by using measured relative abundance obtained from V1-V3 and V6-V8 regions. Users can understand more easily after you read graphical representation of “workflows of Adj-16S”. 
 (you can download mock community dataset in https://doi.org/10.1128/msphere.01202-20) (SRP291583)
 
-	Enhancing microbiome diversity and functional profiling
-	Raw data (phyloseq form) of adjusted relative abundance using Adj-16S method can be used for diverse R packages and PICRUSt2, not only mock community dataset, but you can also apply this methodology to diverse datasets which have paired-end sequences. Our 16S rRNA amplicon datasets (derived from human gut sample) using MiSeq platform are available on Sequence Read Archive (SRA), with project ID: PRJNA1088906.
+Enhancing microbiome diversity and functional profiling
+Raw data (phyloseq form) of adjusted relative abundance using Adj-16S method can be used for diverse R packages and PICRUSt2, not only mock community dataset, but you can also apply this methodology to diverse datasets which have paired-end sequences. Our 16S rRNA amplicon datasets (derived from human gut sample) using MiSeq platform are available on Sequence Read Archive (SRA), with project ID: PRJNA1088906.
 
 **Workflows of Adj-16S**
 
