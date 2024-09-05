@@ -70,12 +70,15 @@ Operating system (Linux or Mac)
 **Usage**
 
 #1. Trimming sequences using fastp
+
 We provide customized python code (**01.fastp.py**). In the script, you can easily change the code considering your file name. (Installation and guide about fastp, follow the above github link)
 
 #2. Check Q score of paired-end sequences using QIIME2
+
 Confirm the Q score of paired-end reads with QIIME2 platform. Before merging or concatenating paired-end sequences, we need to confirm where the median Q score falls below Q20.
 
 #3. Make concatenated sequences using JTax 
+
 To obtain merged sequences, you just follow QIIME2 document as described. But, QIIME2 platform cannot concatenate sequences. So, we used JTax platform to concatenate forward and reverse sequences. 
 We can obtain concatenated sequences with direct-joining and inside-out methods. We also provide the customized python codes (**02.trim_fastp.py** and **03. JTax.py**).
 First, you can trim sequences with appropriate positions which can be fixed in #2 using QIIME2. We provide customized python code 02, to trim easily for user’s availability. You can adjust (Line XX of code 02) trimming positions and file names.
@@ -83,6 +86,7 @@ Second, you can concatenate sequences with two methods (DJ and IO) using python 
 Third, perform a python **codes 04** (Clear_string_N.py and Clear_string_I.py). After concatenating sequences, ‘NNNNNNNN’ and ‘IIIIIIII’ are placed in the connected position between forward and reverse reads. These gaps can interfere with the next step of analysis and have to be removed. 
 
 #4. Apply the correction coefficient values for each microbiome sample
+
 First, users can easily merge V13-derived and V68-derived table.qza files with “qiime feature-table merge” command line (Please find a detailed command line with QIIME2 document). Second, users can obtain feature-table.tsv from table.qza using “biom convert -i feature-table.biom -o feature-table.tsv --to-tsv”. Third, perform taxonomic classification of V13-DJ and V68-DJ derived ASVs by searching 16S rRNA database such as SILVA, RDP, and greengenes2 using command line in QIIME2 document. Users can obtain taxonomy.tsv from taxonomy.qza.
 
 1_extract_taxa.py and 2_dataframe_rearrange.py: Load family names from taxonomy.tsv and place them to the out-id column in feature-table.tsv. 
@@ -93,6 +97,7 @@ First, users can easily merge V13-derived and V68-derived table.qza files with �
 Users can perform these codes separately or run them all at once with the **05.Adj-16S.py** code.
 
 #5 Use diverse R packages (phyloseq, microbiomemarker)
+
 Using the feature-adj.tsv file, users can obtain more accurate microbiome composition and PICRUSt2-based functional profile data. Additionally, users can load the ASVs data with phyloseq (R package) and analyze microbiome data such as alpha and beta diversity.
 
 
