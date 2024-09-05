@@ -67,6 +67,8 @@ Users can download and align the sequences to diverse 16S rRNA databases.
 Operating system (Linux or Mac)
 
 
+
+
 **Usage**
 
 #1. Trimming sequences using fastp
