@@ -88,11 +88,12 @@ Third, perform a python codes 04 (Clear_string_N.py and Clear_string_I.py). Afte
 #4. Apply the correction coefficient values for each microbiome sample
 First, users can easily merge V13-derived and V68-derived table.qza files with “qiime feature-table merge” command line (Please find a detailed command line with QIIME2 document). Second, users can obtain feature-table.tsv from table.qza using “biom convert -i feature-table.biom -o feature-table.tsv --to-tsv”. Third, perform taxonomic classification of V13-DJ and V68-DJ derived ASVs by searching 16S rRNA database such as SILVA, RDP, and greengenes2 using command line in QIIME2 document. Users can obtain taxonomy.tsv from taxonomy.qza.
 
-	1_extract_taxa.py and 2_dataframe_rearrange.py: Load family names from taxonomy.tsv and place them to the out-id column in feature-table.tsv. 
-	3_processing-v13-adj.py and 4_processing-v68-adj.py: Change each correction coefficient value to the corresponding family using coefficient.xlsx file. 
-	5_multiply-v13-adj.py and 6_multiply-v68-adj.py: Multiply the ASV value by the correction coefficient value and save it as feature-v13-adj.tsv and feature-v68-adj.tsv.
-	7_sum-adj.py: Apply this code to sum ASVs of feature-v13-adj.tsv and feature-v68-adj.tsv. Finally, users can obtain feature-adj.tsv file. Change only the columns of the feature-adj.tsv file to the same name as the sample name to be used in the metadata, save it, and then use the feature-adj.tsv file with phyloseq or PICRUSt2.
-	Users can perform these codes separately or run them all at once with the 05.Adj-16S.py code.
+1_extract_taxa.py and 2_dataframe_rearrange.py: Load family names from taxonomy.tsv and place them to the out-id column in feature-table.tsv. 
+3_processing-v13-adj.py and 4_processing-v68-adj.py: Change each correction coefficient value to the corresponding family using coefficient.xlsx file. 
+5_multiply-v13-adj.py and 6_multiply-v68-adj.py: Multiply the ASV value by the correction coefficient value and save it as feature-v13-adj.tsv and feature-v68-adj.tsv.
+7_sum-adj.py: Apply this code to sum ASVs of feature-v13-adj.tsv and feature-v68-adj.tsv. Finally, users can obtain feature-adj.tsv file. Change only the columns of the feature-adj.tsv file to the same name as the sample name to be used in the metadata, save it, and then use the feature-adj.tsv file with phyloseq or PICRUSt2.
+
+Users can perform these codes separately or run them all at once with the 05.Adj-16S.py code.
 
 #5 Use diverse R packages (phyloseq, microbiomemarker)
 Using the feature-adj.tsv file, users can obtain more accurate microbiome composition and PICRUSt2-based functional profile data. Additionally, users can load the ASVs data with phyloseq (R package) and analyze microbiome data such as alpha and beta diversity.
