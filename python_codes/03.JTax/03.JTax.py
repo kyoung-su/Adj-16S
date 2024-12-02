@@ -1,29 +1,35 @@
-#!/usr/bin/phtyon
+#!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
 import os
-import os.path
 import time
 
-class SYSTEM_CMD:
-
-    def __init__(self):
-
-        os.chdir("os.getcwd()")
-
-        DIR_FILE = os.getcwd()
+# Define the function to execute system commands
+def run_system_commands():
+    # Get the current working directory
+    dir_file = os.getcwd()
+    
+    # List all files in the directory
+    files = os.listdir(dir_file)
+    
+    # Find pairs of files ending with `_1_trim.fastp.fastq` and `_2_trim.fastp.fastq`
+    file_pairs = []
+    for file1 in files:
+        if file1.endswith("_1_trim.fastp.fastq"):
+            file2 = file1.replace("_1_trim.fastp.fastq", "_2_trim.fastp.fastq")
+            if file2 in files:
+                file_pairs.append((file1, file2))
+    
+    # Process each file pair
+    for file1, file2 in file_pairs:
+        # Construct the system command
+        cmd = f"jtax.pl ref.fa 13primer.fa {file1} {file2} -join dj"
+        print(f"Running: {cmd}")
         
-        for X in range(5000, 10000):
-          
-            FileName01 = f"SRR1300{X}_1_trim.fastp.fastq"
-            FileName02 = f"SRR1300{X}_2_trim.fastp.fastq"
+        # Execute the command
+        os.system(cmd)
+        time.sleep(1)  # Pause to avoid overwhelming the system
             
-            if os.path.isfile(f"{DIR_FILE}{FileName01}") and os.path.isfile(f"{DIR_FILE}{FileName02}"):
-                    CMD = f"jtax.pl ref.fa 13primer.fa {FileName01} {FileName02} -join dj"
-                    os.system(CMD)
-                    time.sleep(1)
-                    
-            else:
-                pass
-
-SYSTEM_CMD()
+# Run the function
+if __name__ == "__main__":
+    run_system_commands()
