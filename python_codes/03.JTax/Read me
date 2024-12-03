@@ -1,5 +1,26 @@
-Before perform the JTax code, users should set path environment variable and acquire authority as below. 
+#1. Before perform the JTax code, users should set path environment variable and acquire authority as below. 
 PATH=$PATH:/{directory installed JTax}
 PATH=$PATH:/{directory installed JTax}/bin
 PATH=$PATH:/{directory installed JTax}/ncbi-blast-2.2.31+/bin
 chmod 755 usearch11.0.667_i86linux32
+
+#2. The output file has an extension that ends in .fq, so you can edit it in one step to fastq using below python code.
+
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+import os
+import glob
+
+def rename_fq_to_fastq():
+    # Search for .fq files in the current directory
+    fq_files = glob.glob("*.fq")
+
+    for fq_file in fq_files:
+        # Change the .fq extension to .fastq
+        new_name = fq_file.replace(".fq", ".fastq")
+        os.rename(fq_file, new_name)
+        print(f"Renamed: {fq_file} -> {new_name}")
+
+# Execute the function
+rename_fq_to_fastq()
