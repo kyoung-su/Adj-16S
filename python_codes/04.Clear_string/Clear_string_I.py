@@ -21,7 +21,7 @@ class Clear_String:
 
         for x in List_File:
 
-            if 'fastp.dj.fq' in x:
+            if 'fastp.dj.fastq' in x:
 
                 List_Result.append(x);
 
